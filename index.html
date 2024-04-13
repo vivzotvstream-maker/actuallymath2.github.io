@@ -78,7 +78,48 @@
 
   
 <body>
-  <div class="welcome-text">Not Actually School</div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Not Actually School</title>
+      <style>
+          header {
+              color: #00008B;
+              padding: 10px 0;
+          }
+          #headerText {
+              margin-top: 20px;
+              font-size: 50px;
+              font-weight: bold;
+              color: #00008B;
+          }
+      </style>
+  </head>
+  <body>
+      <!-- Header without anchor tag -->
+      <header id="header">
+          <!-- Wrap the text in a span -->
+          <span id="headerText">Not Actually School</span>
+      </header>
+
+      <!-- JavaScript to handle the click event on the text -->
+      <script>
+          // Get the span element containing the text
+          var headerText = document.getElementById("headerText");
+
+          // Add a click event listener to the span
+          headerText.addEventListener("click", function() {
+              // Redirect to the specified page
+              window.location.href = "dogeunblocker.html";
+          });
+      </script>
+  </body>
+  </html>
+
+  </html>
+
 
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search for a game...">
@@ -970,8 +1011,9 @@
     /* ... (your existing styles) ... */
     .container {
       max-width: 500px;
+      margin-bottom: 500px; 
       float: right;
-      margin: 5px 10px 5px 5px; 
+      margin: 25px 10px 5px 5px; 
       padding: 10px;
       background-color: #fff;
       border-radius: 10px;
