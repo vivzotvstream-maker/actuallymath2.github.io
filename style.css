@@ -17,7 +17,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  background-color: #e1c019; /* Light blue*/
+  background-image: url('webbackground.png');
   color: black; /* Dark text color */
   font-size: 16px;
 }
