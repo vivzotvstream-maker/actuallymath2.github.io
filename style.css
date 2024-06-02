@@ -48,33 +48,67 @@ h1 {
 
 /* Search bar styling */
 .search-bar {
-  padding: 15px;
+  padding: 10px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-bar input {
   padding: 10px;
   border: 2px solid #3f51b5; /* Indigo */
-  border-radius: 5px;
-  font-size: 16px;
-  width: 60%;
+  border-right: none;
+  border-radius: 20px 0 0 20px;
+  font-size: 14px;
+  width: 40%;
   max-width: 400px;
+  outline: none;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.search-bar input:focus {
+  border-color: #303f9f; /* Darker Indigo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar button {
-  padding: 10px 20px;
+  padding: 10px 15px; /* Reduced padding */
   cursor: pointer;
-  background-color: #3f51b5; /* Indigo */
+  background: #3f51b5; /* Indigo */
   color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background 0.3s ease-in-out;
+  border: 2px solid #3f51b5; /* Indigo */
+  border-radius: 0 20px 20px 0;
+  border-left: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar button:hover {
-  background-color: #303f9f; /* Darker Indigo on hover */
+  background-color: #303f9f; /* Darker Indigo on Hover */
 }
+
+.search-bar button:active {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar button i {
+  font-size: 16px; /* Adjusted the size of the icon */
+}
+
+
+
 
 /* Flex container styling */
 .flex-container {
