@@ -40,19 +40,7 @@
       /* Adjust margin to make space for the fixed buttons */
     }
 
-    .search-bar {
-      padding: 25px;
-      text-align: center;
-    }
-
-    .search-bar input {
-      padding: 20px;
-    }
-
-    .search-bar button {
-      padding: 20px;
-      cursor: pointer;
-    }
+   
 
     .flex-container {
       display: flex;
@@ -73,32 +61,33 @@
       position: relative;
     }
 
-    .flex-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
 
     .flex-item span {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0s, opacity 0.2s linear;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Faster transition duration */
       position: absolute;
-      bottom: 10px;
+      bottom: 40px; /* Place the tooltip well above the element */
       left: 50%;
       transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: bold;
+      background-color: #1e90ff; /* DodgerBlue background */
+      color: #ffffff; /* White text color for contrast */
+      padding: 10px 15px;
+      border-radius: 8px; /* Rounded corners for a modern look */
+      font-size: 14px;
+      font-weight: 500;
       white-space: nowrap;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+      border: 1px solid #00bfff; /* DeepSkyBlue border for slight contrast */
+      z-index: 10;
+      pointer-events: none; /* Ensures the tooltip does not interfere with mouse events */
     }
 
     .flex-item:hover span {
       visibility: visible;
       opacity: 1;
     }
+
 
 
   </style>
