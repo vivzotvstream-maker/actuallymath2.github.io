@@ -114,21 +114,33 @@ font-size: 16px; /* Adjusted the size of the icon */
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 10px; /* Added padding for better spacing */
+  gap: 20px; /* Added gap for consistent spacing between items */
 }
 
-/* Flex item styling */
 .flex-item {
-  margin: 20px;
   width: 200px;
   height: 200px;
   background-color: #3498db; /* Bright blue background for flex items */
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 15px; /* Slightly more rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added transition for background color */
+  display: flex; /* Center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .flex-item:hover {
-  transform: scale(1.1); /* Slightly expand on hover */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+  transform: scale(1.05); /* Slightly less aggressive scale */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+  background-color: #2980b9; /* Darker shade on hover for effect */
 }
+
+.flex-item p {
+  color: white; /* Change text color for contrast */
+  margin: 0; /* Remove default margin */
+  font-size: 1.2em; /* Slightly larger font */
+  font-weight: bold; /* Make text bold */
+}
+
