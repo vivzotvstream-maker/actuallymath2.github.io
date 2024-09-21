@@ -52,7 +52,7 @@
       overflow: hidden;
       font-size: 18px;
       transition: background-color 0.3s, transform 0.3s;
-      margin-top: 20px; /* Added margin to separate from content */
+      margin-top: 20px;
     }
 
     .button .hover-effect {
@@ -66,7 +66,7 @@
       transform: translate(-50%, -50%) scale(0);
       transition: transform 0.4s ease, opacity 0.4s ease;
       opacity: 0;
-      pointer-events: none; /* Ignore mouse events */
+      pointer-events: none;
     }
 
     .button:hover {
@@ -80,8 +80,8 @@
 
     .home-button {
       position: fixed;
-      top: 15px;
-      right: 15px;
+      top: 15px; /* Equal spacing from the top */
+      right: 22px; /* Moved to 20px from the right */
       background-color: #444;
     }
 
@@ -182,20 +182,19 @@
         const y = e.clientY - rect.top; 
         effect.style.left = `${x}px`;
         effect.style.top = `${y}px`;
-        effect.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset effect
-        effect.style.opacity = '0'; // Make it invisible
+        effect.style.transform = 'translate(-50%, -50%) scale(0)';
+        effect.style.opacity = '0';
 
-        // Trigger animation immediately
         setTimeout(() => {
-          effect.style.transform = 'translate(-50%, -50%) scale(1)'; // Start the effect
-          effect.style.opacity = '1'; // Make it visible
+          effect.style.transform = 'translate(-50%, -50%) scale(1)';
+          effect.style.opacity = '1';
         }, 0);
       });
 
       button.addEventListener('mouseleave', () => {
         const effect = button.querySelector('.hover-effect');
-        effect.style.opacity = '0'; // Hide the effect when leaving
-        effect.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset the effect
+        effect.style.opacity = '0';
+        effect.style.transform = 'translate(-50%, -50%) scale(0)';
       });
     });
   </script>
