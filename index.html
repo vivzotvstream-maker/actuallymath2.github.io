@@ -21,83 +21,6 @@
     body {
   
 
-    .welcome-text {
-      margin-top: 1px;
-      font-size: 44px;
-      font-weight: bold;
-      color: #333;
-      font-family: 'Bungee Shade', sans-serif; /* Replace 'Bungee Shade' with the name of the scriptive font you want to use */
-    }
-
-        .flex-container {
-            margin-top: 60px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .flex-item {
-            margin: 8px;
-            padding: 12px;
-            background-color: #fff;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s, border-radius 0.2s; /* Include border-radius in transition */
-            position: relative;
-            border-radius: 12px; /* Set initial rounded corners */
-        }
-
-        .flex-item:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-            border-radius: 12px; /* Keep the same rounded corners on hover */
-            border: 5px solid #000000; /* Border color on hover */
-        }
-
-        .flex-item::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.2); /* Slightly dark overlay */
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            border-radius: 12px; /* Match border radius */
-        }
-
-        .flex-item:hover::after {
-            opacity: 1;
-        }
-
-        .flex-item span {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            position: absolute;
-            bottom: 25px; /* More breathing room */
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff; /* White text */
-            background-color: rgba(0, 0, 0, 0.85); /* Richer background */
-            padding: 10px 16px; /* Balanced padding */
-            font-size: 16px; /* Clean font size */
-            font-weight: 500; /* Medium weight */
-            white-space: nowrap;
-            border-radius: 12px; /* Soft rounded corners */
-            z-index: 10;
-            pointer-events: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
-            text-align: center; /* Centered text for better presentation */
-        }
-
-        .flex-item:hover span {
-            visibility: visible;
-            opacity: 1;
-        }
-
 
 
 
@@ -110,62 +33,44 @@
 
 
   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" type="text/css" /> <!-- Link to your stylesheet -->
+</head>
 <body>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Google Classroom</title>
-        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-        <style>
-            header {
-                color: #00008B;
-                padding: 10px 0;
-            }
-            #headerText {
-                margin-top: 20px;
-                padding: 5px;
-                font-size: 50px;
-                font-weight: bold;
-                color: #00008B;
-                font-family: 'Bungee Shade', sans-serif;
-            }
-        </style>
-    </head>
-    <body>
-        <header id="header">
-            <span id="headerText">Actually Math</span>
-        </header>
-    </body>
-    </html>
+    <header id="header">
+        <span id="headerText">Actually Math</span>
+    </header>
+</body>
+</html>
 
-
-
-  </html>
 
 
 <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="Search for a game..." onkeypress="handleKeyPress(event)">
+  <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="searchGames()">
   <button onclick="searchGames()"><i class="fas fa-search"></i></button>
 </div>
 
-
 <script>
-  function handleKeyPress(event) {
-      if (event.key === 'Enter') {
-          searchGames();
-      }
-  }
+    function searchGames() {
+        var input = document.getElementById('searchInput');
+        var filter = input.value.toUpperCase();
+        var flexContainer = document.getElementsByClassName('flex-container')[0];
+        var flexItem = flexContainer.getElementsByClassName('flex-item');
 
-  function searchGames() {
-      // Add your search functionality here
-      // This function will be called when the Enter key is pressed or when the search button is clicked
-  }
+        for (var i = 0; i < flexItem.length; i++) {
+            var a = flexItem[i];
+            var txtValue = a.textContent || a.innerText;
+            flexItem[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
+        }
+    }
 </script>
 
-
-  
 
 
 
@@ -511,59 +416,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Tip</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f3f3;
-    font-size: 14px;
-  }
-  /* Main Container */
-  .container {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  /* Tip Section */
-  .tip {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  .tip-text {
-    font-size: 14px;
-    color: #333;
-    line-height: 1.4;
-  }
-  .tip-img {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-  }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tip</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- Main Content Container -->
-<div class="container">
-  <!-- Student Tip Section -->
-  <div class="tip">
-    <div class="tip-text">
-      Student Tip! If a teacher is coming, press 
-      <img class="tip-img" src="http://zachattack.oyosite.com/totallyscience/kissclipart-tilde-key-clipart-computer-keyboard-tilda-clip-art-72f644fb9dccbc89.png" alt="Tilde key"> 
-      to activate school panic mode. It will switch to a Google Classroom tab.
-
+    <div class="container">
+        <div class="tip">
+            <div class="tip-text">
+                Student Tip! If a teacher is coming, press 
+                <img class="tip-img" src="http://zachattack.oyosite.com/totallyscience/kissclipart-tilde-key-clipart-computer-keyboard-tilda-clip-art-72f644fb9dccbc89.png" alt="Tilde key"> 
+                to activate school panic mode. It will switch to a Google Classroom tab.
+            </div>
+        </div>
     </div>
-  </div>
-</div>
- 
+</body>
+</html>
+
 
 
 
@@ -585,81 +456,12 @@
   <br>
   
 
-  <script>
-    function searchGames() {
-      var input, filter, flexContainer, flexItem, a, i, txtValue;
-      input = document.getElementById('searchInput');
-      filter = input.value.toUpperCase();
-      flexContainer = document.getElementsByClassName('flex-container')[0];
-      flexItem = flexContainer.getElementsByClassName('flex-item');
-
-      for (i = 0; i < flexItem.length; i++) {
-        a = flexItem[i];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          flexItem[i].style.display = '';
-        } else {
-          flexItem[i].style.display = 'none';
-        }
-      }
-    }
-
-
-
-
-  </script>
-</body>
-
-</html>
-
-
-
-
-<!-- Your content goes here -->
-
-</body>
-</html>
-
-
-<!-- Your content goes here -->
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <style>
-    /* ... (your existing styles) ... */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f3f3f3;
-      font-size: 14px;
-    }
-    /* Main Container */
-    .container {
-      max-width: 500px;
-      margin: 30px auto;
-      padding: 10px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
   
+
+</html>
+
+
+
 
     
 

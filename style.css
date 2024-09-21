@@ -9,26 +9,41 @@ body {
   line-height: 1.6;
   background-image: url('webbackground.png');
   color: #333;
-  font-family: 'Montserrat', sans-serif; /* Modern sans-serif font */
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
+/* Fallback styles for when the background image is not available */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  font-size: 14px;
+}
 
+/* Main Container */
 .container {
-  width: 90%;
-  margin: 0 auto;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Header styling */
 header {
-  color: #fff; /* White text */
-  padding: 20px 0;
-  text-align: center; /* Centered header content */
-  width: 100%;
+  color: #00008B; /* Dark blue color */
+  padding: 20px 0; /* Vertical padding */
+  text-align: center; /* Center the text horizontally */
+}
+
+#headerText {
+  margin: 0; /* Remove any default margin */
+  padding: 5px; /* Padding around the text */
+  font-size: 50px; /* Font size */
+  font-weight: bold; /* Bold text */
+  color: #00008B; /* Dark blue color */
+  font-family: 'Bungee Shade', sans-serif; /* Font family */
 }
 
 h1 {
@@ -41,79 +56,80 @@ h1 {
 .welcome-text {
   margin-left: 10px;
   margin-top: 20px;
-  font-size: 28px; /* Larger font size */
+  font-size: 44px; /* Unified font size */
   font-weight: bold;
+  color: #333;
+  font-family: 'Bungee Shade', sans-serif;
   text-align: center;
 }
 
 /* Search bar styling */
 .search-bar {
-padding: 10px;
-text-align: center;
-display: flex;
-justify-content: center;
-align-items: center;
-width: 100%;
-box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-bar input {
-padding: 10px;
-border: 2px solid #3f51b5; /* Indigo */
-border-right: none;
-border-radius: 20px 0 0 20px;
-font-size: 14px;
-width: 40%;
-max-width: 400px;
-outline: none;
-background: #fff;
-color: #333;
-transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: 10px;
+  border: 2px solid #3f51b5; /* Indigo */
+  border-right: none;
+  border-radius: 20px 0 0 20px;
+  font-size: 14px;
+  width: 40%;
+  max-width: 400px;
+  outline: none;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .search-bar input::placeholder {
-color: #aaa;
+  color: #aaa;
 }
 
 .search-bar input:focus {
-border-color: #303f9f; /* Darker Indigo */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #303f9f; /* Darker Indigo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar button {
-padding: 10px 15px; /* Reduced padding */
-cursor: pointer;
-background: #3f51b5; /* Indigo */
-color: #fff;
-border: 2px solid #3f51b5; /* Indigo */
-border-radius: 0 20px 20px 0;
-border-left: none;
-font-size: 14px;
-transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-display: flex;
-align-items: center;
-justify-content: center;
+  padding: 10px 15px; /* Reduced padding */
+  cursor: pointer;
+  background: #3f51b5; /* Indigo */
+  color: #fff;
+  border: 2px solid #3f51b5; /* Indigo */
+  border-radius: 0 20px 20px 0;
+  border-left: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar button:hover {
-background-color: #303f9f; /* Darker Indigo on Hover */
+  background-color: #303f9f; /* Darker Indigo on Hover */
 }
 
 .search-bar button:active {
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar button i {
-font-size: 16px; /* Adjusted the size of the icon */
+  font-size: 16px; /* Adjusted the size of the icon */
 }
-
 
 /* Flex container styling */
 .flex-container {
-  margin-top: 30px;
+  margin-top: 60px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: space-around;
   padding: 10px; /* Added padding for better spacing */
   gap: 20px; /* Added gap for consistent spacing between items */
 }
@@ -121,26 +137,81 @@ font-size: 16px; /* Adjusted the size of the icon */
 .flex-item {
   width: 200px;
   height: 200px;
-  background-color: #3498db; /* Bright blue background for flex items */
+  background-color: #fff; /* Change to white */
   text-align: center;
-  border-radius: 15px; /* Slightly more rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  cursor: pointer;
+  border-radius: 12px; /* Set initial rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added transition for background color */
+  position: relative; /* Needed for overlay effect */
   display: flex; /* Center content */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
 }
 
 .flex-item:hover {
-  transform: scale(1.05); /* Slightly less aggressive scale */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
-  background-color: #2980b9; /* Darker shade on hover for effect */
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  border: 5px solid #000000; /* Border color on hover */
 }
 
-.flex-item p {
-  color: white; /* Change text color for contrast */
-  margin: 0; /* Remove default margin */
-  font-size: 1.2em; /* Slightly larger font */
-  font-weight: bold; /* Make text bold */
+.flex-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Slightly dark overlay */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  border-radius: 12px; /* Match border radius */
 }
 
+.flex-item:hover::after {
+  opacity: 1;
+}
+
+.flex-item span {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: absolute;
+  bottom: 25px; /* More breathing room */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff; /* White text */
+  background-color: rgba(0, 0, 0, 0.85); /* Richer background */
+  padding: 10px 16px; /* Balanced padding */
+  font-size: 16px; /* Clean font size */
+  font-weight: 500; /* Medium weight */
+  white-space: nowrap;
+  border-radius: 12px; /* Soft rounded corners */
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
+  text-align: center; /* Centered text for better presentation */
+}
+
+.flex-item:hover span {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tip Section */
+.tip {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tip-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.tip-img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
