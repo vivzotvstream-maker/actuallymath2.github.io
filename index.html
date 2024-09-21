@@ -75,24 +75,29 @@
         .flex-item span {
             visibility: hidden;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Faster transition duration */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
             position: absolute;
-            bottom: 10px; /* Lower the tooltip closer to the element */
+            bottom: 25px; /* More breathing room */
             left: 50%;
             transform: translateX(-50%);
-            color: #ffffff; /* White text */
-            padding: 10px 15px;
-            font-size: 17px;
-            font-weight: 500;
+            color: #fff; /* White text */
+            background-color: rgba(0, 0, 0, 0.85); /* Richer background */
+            padding: 10px 16px; /* Balanced padding */
+            font-size: 16px; /* Clean font size */
+            font-weight: 500; /* Medium weight */
             white-space: nowrap;
+            border-radius: 12px; /* Soft rounded corners */
             z-index: 10;
-            pointer-events: none; /* Ensures the tooltip does not interfere with mouse events */
+            pointer-events: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
+            text-align: center; /* Centered text for better presentation */
         }
 
         .flex-item:hover span {
             visibility: visible;
             opacity: 1;
         }
+
 
 
 
@@ -656,8 +661,7 @@
     }
   
 
-    <div align='center'><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=178046&s=7' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small></div>
-
+    
 
 
     
@@ -687,8 +691,14 @@
       });
     }
 
-    // ... (your existing searchGames() function) ...
+
   </script>
+
+
+    <div align='center'><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=178046&s=7' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter"></a></small></div>
+
+
+    
 </body>
 
 </html>
