@@ -13,22 +13,22 @@
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #1f1f1f, #4b4b4b);
+      background-color: #1f1f1f;
       font-family: 'Helvetica', sans-serif;
-      color: white;
+      color: #ffffff;
     }
 
     .content {
       position: relative;
-      width: 75%;
+      width: 85%;
       max-width: 1000px;
       height: 60vh;
-      backdrop-filter: blur(15px) saturate(180%);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: #2b2b2b;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid #444;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
@@ -42,68 +42,81 @@
     .button {
       display: flex;
       align-items: center;
-      gap: 8px;
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      padding: 10px 20px;
+      gap: 12px;
+      background-color: #444;
+      border: 2px solid #666;
+      padding: 12px 24px;
       border-radius: 30px;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 18px;
       transition: background-color 0.3s, transform 0.3s;
-      z-index: 1000;
+      margin-top: 20px; /* Added margin to separate from content */
+    }
+
+    .button .hover-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none; /* Ignore mouse events */
     }
 
     .button:hover {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: #555;
       transform: scale(1.05);
     }
 
-    /* Home button positioned above content */
-    .home-button {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: rgba(255, 255, 255, 0.2);
+    .button:hover .hover-effect {
+      opacity: 1;
     }
 
-    /* Fullscreen button inside content, positioned at the bottom */
-    .fullscreen-button {
-      bottom: 20px;
-      right: 20px;
-      justify-content: center;
+    .home-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background-color: #444;
     }
 
     .icon {
-      font-size: 24px;
-      color: white;
+      font-size: 20px;
+      color: #ffffff;
     }
 
     .button-text {
-      font-size: 16px;
-      color: white;
+      font-size: 18px;
+      color: #ffffff;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
       .content {
         width: 90%;
+        max-width: 700px;
         height: 50vh;
       }
 
       .button {
-        padding: 8px 16px;
+        padding: 10px 20px;
+        font-size: 16px;
       }
 
       .icon {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .button-text {
-        font-size: 14px;
+        font-size: 16px;
       }
     }
   </style>
 
-  <!-- Icons (using Font Awesome for icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -111,16 +124,16 @@
 
   <div class="content" aria-label="Interactive content container">
     <iframe id="gameFrame" src="https://v4-nu-khaki.vercel.app/" onload="focusGame()" title="Interactive game"></iframe>
-
-    <!-- Fullscreen button inside the content, at the bottom -->
-    <div class="button fullscreen-button" onclick="toggleFullScreen()" aria-label="Fullscreen button">
-      <i class="fas fa-expand icon"></i>
-      <span class="button-text">Fullscreen</span>
-    </div>
   </div>
 
-  <!-- Home button floating above the content, positioned outside -->
+  <div class="button fullscreen-button" onclick="toggleFullScreen()" aria-label="Fullscreen button">
+    <span class="hover-effect"></span>
+    <i class="fas fa-expand icon"></i>
+    <span class="button-text">Fullscreen</span>
+  </div>
+
   <div class="button home-button" onclick="goToHomePage()" aria-label="Home button">
+    <span class="hover-effect"></span>
     <i class="fas fa-home icon"></i>
   </div>
 
@@ -158,6 +171,32 @@
       if (e.key === '`') {
         window.open('https://classroom.google.com/u/0/h', '_blank');
       }
+    });
+
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const effect = button.querySelector('.hover-effect');
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top; 
+        effect.style.left = `${x}px`;
+        effect.style.top = `${y}px`;
+        effect.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset effect
+        effect.style.opacity = '0'; // Make it invisible
+
+        // Trigger animation immediately
+        setTimeout(() => {
+          effect.style.transform = 'translate(-50%, -50%) scale(1)'; // Start the effect
+          effect.style.opacity = '1'; // Make it visible
+        }, 0);
+      });
+
+      button.addEventListener('mouseleave', () => {
+        const effect = button.querySelector('.hover-effect');
+        effect.style.opacity = '0'; // Hide the effect when leaving
+        effect.style.transform = 'translate(-50%, -50%) scale(0)'; // Reset the effect
+      });
     });
   </script>
 
