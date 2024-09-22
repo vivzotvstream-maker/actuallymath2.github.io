@@ -65,27 +65,23 @@ h1 {
 
 /* Search bar styling */
 .search-bar {
-  padding: 10px;
-  text-align: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 20px auto 30px; /* Positioned below header */
   width: 100%;
-  box-sizing: border-box;
+  max-width: 400px; /* Adjusted to be smaller */
+  position: relative;
 }
 
 .search-bar input {
-  padding: 10px;
-  border: 2px solid #3f51b5; /* Indigo */
-  border-right: none;
-  border-radius: 20px 0 0 20px;
-  font-size: 14px;
-  width: 40%;
-  max-width: 400px;
+  flex: 1;
+  padding: 10px; /* Reduced padding */
+  font-size: 0.9rem; /* Adjusted font size */
+  border: 2px solid #dfe3eb;
+  border-radius: 50px;
   outline: none;
-  background: #fff;
-  color: #333;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: all 0.3s ease;
+  background-color: #fff;
 }
 
 .search-bar input::placeholder {
@@ -93,36 +89,32 @@ h1 {
 }
 
 .search-bar input:focus {
-  border-color: #303f9f; /* Darker Indigo */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #667eea; /* Focused border color */
 }
 
 .search-bar button {
-  padding: 10px 15px; /* Reduced padding */
+  position: absolute;
+  right: 8px; /* Adjusted position */
+  top: 50%;
+  transform: translateY(-50%);
+  background: #667eea; /* Main button color */
+  border: none;
+  padding: 8px 12px; /* Reduced padding */
+  border-radius: 50px;
+  color: white;
   cursor: pointer;
-  background: #3f51b5; /* Indigo */
-  color: #fff;
-  border: 2px solid #3f51b5; /* Indigo */
-  border-radius: 0 20px 20px 0;
-  border-left: none;
-  font-size: 14px;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
 .search-bar button:hover {
-  background-color: #303f9f; /* Darker Indigo on Hover */
-}
-
-.search-bar button:active {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #764ba2; /* Hover color */
 }
 
 .search-bar button i {
-  font-size: 16px; /* Adjusted the size of the icon */
+  font-size: 14px; /* Adjusted icon size */
+  color: #fff;
 }
+
 
 /* Flex container styling */
 .flex-container {
