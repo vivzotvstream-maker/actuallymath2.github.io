@@ -7,17 +7,11 @@
 /* Basic styling */
 body {
   line-height: 1.6;
-  background-image: url('webbackground.png');
   color: #333;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-}
-
-/* Fallback styles for when the background image is not available */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f3f3;
-  font-size: 14px;
+  background-image: url('webbackground.png');
+  background-color: #f3f3f3; /* Fallback background color */
 }
 
 /* Main Container */
@@ -27,7 +21,7 @@ body {
   padding: 10px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
 }
 
 /* Header styling */
@@ -110,11 +104,18 @@ h1 {
   background: #764ba2; /* Hover color */
 }
 
+.search-bar button:focus {
+  outline: none; /* Remove default focus outline */
+}
+
+.search-bar button:active {
+  background: #5a66d4; /* Active button color */
+}
+
 .search-bar button i {
   font-size: 14px; /* Adjusted icon size */
   color: #fff;
 }
-
 
 /* Flex container styling */
 .flex-container {
