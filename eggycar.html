@@ -3,33 +3,36 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Eggy Car</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Classroom</title>
+
   <style>
-    /* Your existing styles */
     body, html {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-    }
-
-    .home-button {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0; /* Light mode background */
+      font-family: 'Helvetica', sans-serif;
+      color: #333; /* Dark text for contrast */
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .content {
-      width: 100%;
-      height: 100%;
+      position: relative;
+      width: 85%;
+      max-width: 1000px;
+      height: 60vh;
+      background-color: #ffffff; /* White content background */
+      border-radius: 20px;
+      border: 1px solid #ccc; /* Lighter border */
       overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, border-color 0.3s;
     }
 
     iframe {
@@ -37,27 +40,216 @@
       height: 100%;
       border: none;
     }
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #e0e0e0; /* Light button background */
+      border: 2px solid #bbb; /* Border color */
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 18px;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top: 20px;
+    }
+
+    .button .hover-effect {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.4); /* Light hover effect */
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .button:hover {
+      background-color: #d0d0d0; /* Darker button on hover */
+      transform: scale(1.05);
+    }
+
+    .button:hover .hover-effect {
+      opacity: 1;
+    }
+
+    .home-button {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background-color: #e0e0e0; /* Light background */
+    }
+
+    .icon {
+      font-size: 20px;
+      color: #333; /* Dark text color */
+    }
+
+    .button-text {
+      font-size: 18px;
+      color: #333; /* Dark text color */
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1f1f1f; /* Dark background */
+      color: #ffffff; /* Light text */
+    }
+
+    .content.dark-mode {
+      background-color: #2b2b2b; /* Dark content background */
+      border: 1px solid #444; /* Darker border */
+    }
+
+    .button.dark-mode {
+      background-color: #444; /* Dark button background */
+      border-color: #666; /* Darker border color */
+    }
+
+    .button.dark-mode .icon,
+    .button.dark-mode .button-text {
+      color: #ffffff; /* Light text color for buttons in dark mode */
+    }
+
+    @media (max-width: 1080px) {
+      .content {
+        width: 90%;
+        max-width: 700px;
+        height: 50vh;
+      }
+
+      .button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      .icon {
+        font-size: 18px;
+      }
+
+      .button-text {
+        font-size: 16px;
+      }
+    }
   </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-  <button class="home-button" onclick="goToHomePage()">Home</button>
-  <div class="content">
-    <iframe src="https://ubg365.github.io/eggy-car/play.html"></iframe>
+
+  <div class="content" aria-label="Interactive content container">
+    <iframe id="gameFrame" src="https://hello1405.github.io/eggycar/" onload="focusGame()" title="Interactive game"></iframe>
+  </div>
+
+  <div class="button fullscreen-button" onclick="toggleFullScreen()" aria-label="Fullscreen button">
+    <span class="hover-effect"></span>
+    <i class="fas fa-expand icon"></i>
+    <span class="button-text">Fullscreen</span>
+  </div>
+
+  <div class="button home-button" onclick="goToHomePage()" aria-label="Home button">
+    <span class="hover-effect"></span>
+    <i class="fas fa-home icon"></i>
+  </div>
+
+  <div class="button" onclick="toggleLightDarkMode()" aria-label="Toggle light/dark mode">
+    <span class="hover-effect"></span>
+    <i class="fas fa-adjust icon"></i>
+    <span class="button-text">Toggle Mode</span>
   </div>
 
   <script>
-    function goToHomePage() {
-      window.location.href = '/'; // Assuming the original page URL is '/'
+    // Check localStorage for the theme preference
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      document.querySelector('.content').classList.add('dark-mode');
+      document.querySelectorAll('.button').forEach(button => button.classList.add('dark-mode'));
     }
+
+    function toggleFullScreen() {
+      const iframe = document.getElementById('gameFrame');
+      if (!document.fullscreenElement) {
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+          iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+          iframe.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+      iframe.focus();
+    }
+
+    function focusGame() {
+      const iframe = document.getElementById('gameFrame');
+      iframe.focus();
+    }
+
+    function goToHomePage() {
+      window.location.href = '/';
+    }
+
+    function toggleLightDarkMode() {
+      const body = document.body;
+      const content = document.querySelector('.content');
+      const buttons = document.querySelectorAll('.button');
+
+      body.classList.toggle('dark-mode');
+      content.classList.toggle('dark-mode');
+      buttons.forEach(button => button.classList.toggle('dark-mode'));
+
+      // Save the theme preference in localStorage
+      const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    }
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === '`') {
+        window.open('https://classroom.google.com/u/0/h', '_blank');
+      }
+    });
+
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const effect = button.querySelector('.hover-effect');
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top; 
+        effect.style.left = `${x}px`;
+        effect.style.top = `${y}px`;
+        effect.style.transform = 'translate(-50%, -50%) scale(0)';
+        effect.style.opacity = '0';
+
+        setTimeout(() => {
+          effect.style.transform = 'translate(-50%, -50%) scale(1)';
+          effect.style.opacity = '1';
+        }, 0);
+      });
+
+      button.addEventListener('mouseleave', () => {
+        const effect = button.querySelector('.hover-effect');
+        effect.style.opacity = '0';
+        effect.style.transform = 'translate(-50%, -50%) scale(0)';
+      });
+    });
   </script>
+
 </body>
 
 </html>
-<script>
-  window.addEventListener('keydown', function (e) {
-    if(e.key === '`') {
-      window.open('https://classroom.google.com/u/0/h', '_blank');
-    }
-  }, false);
-</script>
