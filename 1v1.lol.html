@@ -17,7 +17,7 @@
       justify-content: center;
       align-items: center;
       background-color: #f0f0f0; /* Light mode background */
-      font-family: 'Helvetica', sans-serif;
+      font-family: 'Helvetica', 'Arial', sans-serif;
       color: #333; /* Dark text for contrast */
       transition: background-color 0.3s, color 0.3s;
       overflow: hidden;
@@ -33,7 +33,7 @@
       max-width: 800px; /* Default max-width */
       height: auto;
       max-height: 600px; /* Restrict maximum height */
-      min-width: 600px; /* Ensure it doesn't shrink too small */
+      min-width: 300px; /* Reduced minimum width for smaller screens */
     }
 
     .content {
@@ -138,7 +138,7 @@
     @media (max-width: 1080px) {
       .container {
         width: 90vw; /* Take more space on smaller screens */
-        min-width: 500px;
+        min-width: 300px; /* Adjusted min-width */
       }
 
       .button {
@@ -193,34 +193,32 @@
 
   <script>
     // Check localStorage for the theme preference
-    const currentTheme = localStorage.getItem('theme');
+    const currentTheme = localStorage.getItem('theme') ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
     if (currentTheme === 'dark') {
       document.body.classList.add('dark-mode');
       document.querySelector('.content').classList.add('dark-mode');
       document.querySelectorAll('.button').forEach(button => button.classList.add('dark-mode'));
     }
 
-    // Toggle fullscreen mode
+    // Toggle fullscreen mode for iframe
     function toggleFullScreen() {
       const iframe = document.getElementById('gameFrame');
       if (!document.fullscreenElement) {
-        // Request fullscreen
         if (iframe.requestFullscreen) {
           iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) { // Firefox
+        } else if (iframe.mozRequestFullScreen) {
           iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        } else if (iframe.webkitRequestFullscreen) {
           iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) { // IE/Edge
+        } else if (iframe.msRequestFullscreen) {
           iframe.msRequestFullscreen();
         }
       } else {
-        // Exit fullscreen
         if (document.exitFullscreen) {
           document.exitFullscreen();
         }
       }
-      iframe.focus(); // Focus back to iframe
     }
 
     function focusGame() {
@@ -246,7 +244,7 @@
       localStorage.setItem('theme', theme);
     }
 
-    // Add hover effect animation to buttons
+    // Add hover effect animation and keyboard accessibility to buttons
     const buttons = document.querySelectorAll('.button');
     buttons.forEach(button => {
       button.addEventListener('mousemove', (e) => {
@@ -254,8 +252,14 @@
         const rect = button.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        effect.style.left = `${x}px`
+        effect.style.left = `${x}px`;
         effect.style.top = `${y}px`;
+      });
+
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          button.click();
+        }
       });
     });
   </script>
