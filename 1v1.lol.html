@@ -7,11 +7,12 @@
   <title>Google Classroom</title>
 
   <style>
-    body, html {
+    body,
+    html {
       margin: 0;
       padding: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,6 +21,7 @@
       color: #333; /* Dark text for contrast */
       transition: background-color 0.3s, color 0.3s;
       overflow: hidden;
+      position: relative;
     }
 
     .container {
@@ -35,9 +37,12 @@
     }
 
     .content {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9; /* Maintain consistent aspect ratio for content */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 73%;
+      height: 73%;
       background-color: #ffffff; /* White content background */
       border-radius: 20px;
       border: 1px solid #ccc; /* Lighter border */
@@ -168,21 +173,21 @@
       <iframe id="gameFrame" src="https://hello1405.github.io/1v1lol.html/" onload="focusGame()" title="Interactive game"></iframe>
     </div>
 
-    <div class="button fullscreen-button" onclick="toggleFullScreen()" aria-label="Fullscreen button">
+    <div class="button" onclick="toggleLightDarkMode()" aria-label="Toggle light/dark mode" tabindex="0">
       <span class="hover-effect"></span>
-      <i class="fas fa-expand icon"></i>
+      <i class="fas fa-adjust icon" aria-hidden="true"></i>
+      <span class="button-text">Toggle Mode</span>
+    </div>
+
+    <div class="button fullscreen-button" onclick="toggleFullScreen()" aria-label="Fullscreen button" tabindex="0">
+      <span class="hover-effect"></span>
+      <i class="fas fa-expand icon" aria-hidden="true"></i>
       <span class="button-text">Fullscreen</span>
     </div>
 
-    <div class="button home-button" onclick="goToHomePage()" aria-label="Home button">
+    <div class="button home-button" onclick="goToHomePage()" aria-label="Home button" tabindex="0">
       <span class="hover-effect"></span>
-      <i class="fas fa-home icon"></i>
-    </div>
-
-    <div class="button" onclick="toggleLightDarkMode()" aria-label="Toggle light/dark mode">
-      <span class="hover-effect"></span>
-      <i class="fas fa-adjust icon"></i>
-      <span class="button-text">Toggle Mode</span>
+      <i class="fas fa-home icon" aria-hidden="true"></i>
     </div>
   </div>
 
@@ -195,24 +200,27 @@
       document.querySelectorAll('.button').forEach(button => button.classList.add('dark-mode'));
     }
 
+    // Toggle fullscreen mode
     function toggleFullScreen() {
       const iframe = document.getElementById('gameFrame');
       if (!document.fullscreenElement) {
+        // Request fullscreen
         if (iframe.requestFullscreen) {
           iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
+        } else if (iframe.mozRequestFullScreen) { // Firefox
           iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
+        } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
           iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
+        } else if (iframe.msRequestFullscreen) { // IE/Edge
           iframe.msRequestFullscreen();
         }
       } else {
+        // Exit fullscreen
         if (document.exitFullscreen) {
           document.exitFullscreen();
         }
       }
-      iframe.focus();
+      iframe.focus(); // Focus back to iframe
     }
 
     function focusGame() {
@@ -238,6 +246,7 @@
       localStorage.setItem('theme', theme);
     }
 
+    // Add hover effect animation to buttons
     const buttons = document.querySelectorAll('.button');
     buttons.forEach(button => {
       button.addEventListener('mousemove', (e) => {
@@ -245,7 +254,7 @@
         const rect = button.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        effect.style.left = `${x}px`;
+        effect.style.left = `${x}px`
         effect.style.top = `${y}px`;
       });
     });
