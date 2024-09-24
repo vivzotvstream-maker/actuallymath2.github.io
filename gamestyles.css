@@ -1,0 +1,130 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Light mode background */
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #333; /* Dark text for contrast */
+  transition: background-color 0.3s, color 0.3s;
+  overflow: hidden;
+}
+
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 73%;
+    height: 73%;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+iframe {
+  width: 100%; /* Full width of content */
+  height: 100%; /* Full height of content */
+  border: none; /* No border */
+  display: block; /* Ensures the iframe behaves correctly */
+}
+
+.toggle-button-container {
+  position: absolute; /* Stay above content */
+  top: 10px; /* Position at the top */
+  left: 50%;
+  transform: translateX(-50%); /* Center the button */
+  z-index: 2; /* Ensure it's above the content */
+}
+
+.fullscreen-button-container {
+  position: absolute; /* Stay above content */
+  bottom: 10px; /* Position below content */
+  left: 50%;
+  transform: translateX(-50%); /* Center the buttons */
+  z-index: 2; /* Ensure it's above the content */
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #e0e0e0; /* Light button background */
+  border: 2px solid #bbb; /* Border color */
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px; /* Adjust margin */
+  overflow: hidden;
+}
+
+.hover-effect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4); /* Light hover effect */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+}
+
+.button:hover {
+  background-color: #d0d0d0; /* Darker button on hover */
+  transform: scale(1.05);
+}
+
+.button:hover .hover-effect {
+  width: 300%;
+  height: 300%;
+  opacity: 1;
+}
+
+.home-button {
+  position: fixed; /* Fixed position for home button */
+  top: 15px;
+  right: 20px;
+  background-color: #e0e0e0; /* Light background */
+}
+
+.icon {
+  font-size: 20px;
+  color: #333; /* Dark text color */
+}
+
+.button-text {
+  font-size: 18px;
+  color: #333; /* Dark text color */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1f1f1f; /* Dark background */
+  color: #ffffff; /* Light text */
+}
+
+.content.dark-mode {
+  background-color: #2b2b2b; /* Dark content background */
+  border: 1px solid #444; /* Darker border */
+}
+
+.button.dark-mode {
+  background-color: #444; /* Dark button background */
+  border-color: #666; /* Darker border color */
+}
+
+.button.dark-mode .icon,
+.button.dark-mode .button-text {
+  color: #ffffff; /* Light text color for buttons in dark mode */
+}
