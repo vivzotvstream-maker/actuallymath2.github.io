@@ -4,14 +4,25 @@
   box-sizing: border-box;
 }
 
-/* Basic styling */
+/* Basic Styling */
 body {
   line-height: 1.6;
   color: #333;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  background-image: url('webbackground.png');
+  background-image: url('webbackground.png'); /* Your background image */
   background-color: #f3f3f3; /* Fallback background color */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  min-height: 100vh; /* Ensure the body covers full viewport height */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  body {
+      background-image: url('path/to/small-background.png'); /* Optionally change image for smaller screens */
+  }
 }
 
 /* Main Container */
@@ -24,26 +35,85 @@ body {
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
 }
 
-/* Header styling */
-header {
-  color: #00008B; /* Dark blue color */
-  padding: 20px 0; /* Vertical padding */
-  text-align: center; /* Center the text horizontally */
+/* Logo and Header Text */
+.logo {
+  display: flex;
+  align-items: center; /* Center logo and text vertically */
+}
+
+.tab-icon {
+  height: 7vh; /* Reduced logo height */
+  margin-right: 10px; /* Space between logo and text */
+  vertical-align: middle; /* Ensure the image is vertically centered */
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px; /* Increased padding for better spacing */
+  background-color: #1e2a38; /* Header background color */
+  width: 100%;
+  position: fixed; /* Fixed positioning for consistent top alignment */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  z-index: 1000; /* Ensure header is above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 #headerText {
-  margin: 0; /* Remove any default margin */
-  padding: 5px; /* Padding around the text */
-  font-size: 50px; /* Font size */
-  font-weight: bold; /* Bold text */
-  color: #00008B; /* Dark blue color */
-  font-family: 'Bungee Shade', sans-serif; /* Font family */
+  font-size: 26px; /* Header text size */
+  font-family: 'Bungee Shade', cursive; /* Header text font */
+  color: white; /* Text color for header */
 }
 
-h1 {
-  font-size: 3em; /* Larger header font size */
-  margin-bottom: 20px;
-  font-family: 'Pacifico', cursive; /* Playful script font */
+.tabs {
+  display: flex; /* Keep tabs in a row */
+  align-items: center; /* Align tabs vertically in the center */
+  gap: 20px; /* Space between tabs */
+}
+
+.tab {
+  font-family: Impact, sans-serif; /* Use Impact font */
+  font-weight: 100; /* Font weight */
+  font-size: 1.4rem; /* Font size for tabs */
+  color: white; /* Text color for tabs */
+  text-decoration: none; /* Remove underline */
+  padding: 10px 15px; /* Padding for tabs */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+  position: relative; /* Enable relative positioning */
+}
+
+.tab:hover {
+  background-color: #2c3e50; /* Background color on hover */
+  color: #ffffff; /* Ensure text color remains white on hover */
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px; /* Closer to the text */
+  width: 0;
+  height: 3px; /* Height of the underline */
+  background-color: white; /* Underline color */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.tab:hover::after {
+  width: 100%; /* Expand underline on hover */
+  left: 0;
+}
+
+.tab-icon {
+  height: 6vh; /* Adjusted to 6% of viewport height */
+  margin-right: 20px; /* Space between logo and text */
+}
+
+#headerText {
+  font-size: 24px;
+  font-family: 'Bungee Shade', cursive; /* Change font if needed */
 }
 
 /* Welcome text styling */
@@ -61,11 +131,12 @@ h1 {
 .search-bar {
   display: flex;
   justify-content: center;
-  margin: 20px auto 30px; /* Positioned below header */
+  margin: 120px auto 30px; /* Increased margin-top to 100px for more space below header */
   width: 100%;
   max-width: 400px; /* Adjusted to be smaller */
   position: relative;
 }
+
 
 .search-bar input {
   flex: 1;
@@ -207,4 +278,37 @@ h1 {
   width: 30px;
   height: 30px;
   vertical-align: middle;
+}
+
+.welcome-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.large-text {
+  position: absolute;
+  top: 50%;
+  left: 16%;
+  transform: translateY(-50%);
+  font-family: Impact, sans-serif;
+  font-weight: bold;
+  font-size: 6rem;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.small-text {
+  position: absolute;
+  top: 40%; /* Moved higher */
+  right: 16%;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }

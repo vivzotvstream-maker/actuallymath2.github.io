@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actually Math</title>
+    <link rel="icon" href="classroomfavicon.png" sizes="16x16 32x32" type="image/png" id="dynamic-favicon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #101720;
+            font-family: Impact, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #1e2a38;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .tabs {
+            display: flex;
+            gap: 20px;
+        }
+        .tab {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .tab:hover {
+            background-color: #2c3e50;
+        }
+        .centered-text {
+            font-size: 32px;
+            margin: 40px 0;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #e0e0e0;
+            border: 2px solid #bbb;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            position: relative;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
+            overflow: hidden;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background-color: #00a2ff;
+            transform: scale(1.05);
+        }
+        .text-cloak-container, .set-panic-key-container, .set-panic-url-container, .icon-cloak-container {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+        .preset-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .preset-button {
+            width: 60px;
+            height: 60px;
+            border: none;
+            background-size: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        .preset-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="tabs">
+            <a href="/" class="tab">
+                <img src="am-logo.png" alt="Home" class="tab-icon">Home
+            </a>
+            <a href="gs.html" class="tab">Games</a>
+            <a href="/settings.html" class="tab">Settings</a>
+        </div>
+        <span id="headerText">Actually Math</span>
+    </header>
+    
+    <button id="ab-cloak" class="button">Open in About:Blank</button>
+
+    <div class="cloak-text">Tab Cloaking</div>
+    <div class="text-cloak-container">
+        <input type="text" class="text-cloak-box" id="tab-name-input" placeholder="Tab Name">
+        <button id="set-tab-name" class="set-tab-name-button button">Set Tab Name</button>
+    </div>
+    <div class="icon-cloak-container">
+        <input type="text" class="icon-cloak-box" id="icon-url-input" placeholder="Tab Icon URL">
+        <button id="set-tab-icon" class="set-tab-icon-button button">Set Icon</button>
+    </div>
+
+    <div class="preset-buttons">
+        <button class="preset-button" data-title="Actually Math" data-favicon="https://actuallymath.github.io/am-logo.png" style="background-image: url('https://actuallymath.github.io/am-logo.png);"></button>
+        <button class="preset-button" data-title="Google" data-favicon="https://google.com/favicon.ico" style="background-image: url('https://google.com/favicon.ico');"></button>
+        <button class="preset-button" data-title="My Drive - Google Drive" data-favicon="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" style="background-image: url('https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png');"></button>
+        <button class="preset-button" data-title="Google Docs" data-favicon="https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico" style="background-image: url('https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico');"></button>
+        <button class="preset-button" data-title="Home | Schoology" data-favicon="https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico" style="background-image: url('https://asset-cdn.schoology.com/sites/all/themes/schoology_theme/favicon.ico');"></button>
+    </div>
+
+    <div class="panic-key-text">Panic Key</div>
+    <div class="set-panic-key-container">
+        <input type="text" class="set-panic-key-box" placeholder="Panic Key">
+        <button id="set-panic-key" class="set-panic-key-button button">Set Panic Key</button>
+    </div>
+
+    <div class="set-panic-url-container">
+        <input type="text" class="set-panic-url-box" placeholder="Panic URL">
+        <button id="set-panic-url" class="set-panic-url-button button">Set Panic URL</button>
+        <button id="ad-panic-key" class="ad-panic-key-button button">Auto-Detect Panic Key</button>
+    </div>
+
+    <script>
+        // Load saved values from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTabName = localStorage.getItem('tabName');
+            const savedIconURL = localStorage.getItem('iconURL');
+            const savedPanicKey = localStorage.getItem('panicKey');
+            const savedPanicURL = localStorage.getItem('panicURL');
+    
+            if (savedTabName) {
+                document.getElementById('tab-name-input').value = savedTabName;
+                document.title = savedTabName; // Update the document title
+            }
+            if (savedIconURL) {
+                document.getElementById('icon-url-input').value = savedIconURL;
+                document.getElementById('dynamic-favicon').href = savedIconURL; // Update the favicon
+            }
+            if (savedPanicKey) {
+                document.querySelector('.set-panic-key-box').value = savedPanicKey;
+            }
+            if (savedPanicURL) {
+                document.querySelector('.set-panic-url-box').value = savedPanicURL;
+            }
+        });
+    
+        // Event listeners for buttons
+        document.getElementById('set-tab-name').addEventListener('click', function(event) {
+            event.preventDefault();
+            const tabName = document.getElementById('tab-name-input').value;
+            localStorage.setItem('tabName', tabName); // Save to localStorage
+            document.title = tabName; // Change the document title
+            console.log('Tab Name Set:', tabName);
+        });
+    
+        document.getElementById('set-tab-icon').addEventListener('click', function(event) {
+            event.preventDefault();
+            const iconURL = document.getElementById('icon-url-input').value;
+            localStorage.setItem('iconURL', iconURL); // Save to localStorage
+            const favicon = document.getElementById('dynamic-favicon');
+            favicon.href = iconURL; // Change the favicon
+            console.log('Tab Icon URL Set:', iconURL);
+        });
+    
+        // Open in About:Blank functionality
+        document.getElementById('ab-cloak').addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('Open in About:Blank clicked'); // Log to check if the button is working
+            window.open('about:blank', '_blank'); // Open a new tab with about:blank
+        });
+    
+        document.getElementById('set-panic-key').addEventListener('click', function(event) {
+            event.preventDefault();
+            const panicKey = document.querySelector('.set-panic-key-box').value;
+            localStorage.setItem('panicKey', panicKey); // Save to localStorage
+            console.log('Panic Key Set:', panicKey);
+        });
+    
+        document.getElementById('set-panic-url').addEventListener('click', function(event) {
+            event.preventDefault();
+            const panicURL = document.querySelector('.set-panic-url-box').value;
+            localStorage.setItem('panicURL', panicURL); // Save to localStorage
+            console.log('Panic URL Set:', panicURL);
+        });
+    
+        document.querySelectorAll('.preset-button').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const title = this.getAttribute('data-title');
+                const favicon = this.getAttribute('data-favicon');
+    
+                // Set the tab name and icon
+                document.getElementById('tab-name-input').value = title;
+                document.getElementById('icon-url-input').value = favicon;
+    
+                // Save to localStorage
+                localStorage.setItem('tabName', title);
+                localStorage.setItem('iconURL', favicon);
+    
+                // Update the document title and favicon
+                document.title = title;
+                document.getElementById('dynamic-favicon').href = favicon;
+    
+                console.log('Preset Button Clicked:', title, favicon);
+            });
+        });
+    
+        // Panic Key Detection
+        document.addEventListener('keydown', function(event) {
+            const panicKey = localStorage.getItem('panicKey');
+            const panicURL = localStorage.getItem('panicURL');
+            console.log('Current Panic Key:', panicKey); // Log the panic key for debugging
+            if (panicKey && event.key === panicKey) {
+                // Redirect to the panic URL if set
+                if (panicURL) {
+                    window.location.href = panicURL; // Redirect to the panic URL
+                } else {
+                    alert('Panic URL is not set!'); // Alert if the URL is not set
+                }
+            }
+        });
+    
+        document.getElementById('ad-panic-key').addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('Auto-Detect Panic Key clicked'); // Placeholder for actual functionality
+        });
+    </script>
+    
+
+
+    
+    
+</body>
+</html>
