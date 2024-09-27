@@ -10,6 +10,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="classroomfavicon.png" sizes="16x16 32x32" type="image/png" id="dynamic-favicon">
     <script src="panic.js"></script> <!-- Include the panic.js script -->
+    <script src="script.js"></script>
 </head>
 
 
@@ -212,23 +213,6 @@
     </script>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load saved values from localStorage
-        const savedTabName = localStorage.getItem('tabName');
-        const savedIconURL = localStorage.getItem('iconURL');
-
-        if (savedTabName) {
-            document.title = savedTabName; // Update the document title
-        }
-        if (savedIconURL) {
-            const favicon = document.getElementById('dynamic-favicon');
-            if (favicon) {
-                favicon.href = savedIconURL; // Update the favicon
-            }
-        }
-    });
-</script>
 
 
 </body>
