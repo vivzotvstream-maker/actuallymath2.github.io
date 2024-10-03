@@ -1,29 +1,56 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* Basic Styling */
 body {
-  line-height: 1.6;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  background-image: url('webbackground.png'); /* Your background image */
-  background-color: #f3f3f3; /* Fallback background color */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  min-height: 100vh; /* Ensure the body covers full viewport height */
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-image: url('webbackground.png'); /* Your background image */
+    background-color: #f3f3f3; /* Fallback background color */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    min-height: 100vh; /* Ensure the body covers full viewport height */
+}
+
+/* Header Styles */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #1e2a38;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#headerText {
+    font-size: 26px; 
+    font-family: 'Bungee', cursive; /* Use Bungee font */
+    color: white; 
 }
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
-  body {
-      background-image: url('path/to/small-background.png'); /* Optionally change image for smaller screens */
-  }
+    body {
+        background-image: url('webbackground.png'); /* Optionally change image for smaller screens */
+    }
 }
+
+/* Other styles (omitted for brevity) */
+
 
 /* Main Container */
 .container {
@@ -47,25 +74,7 @@ body {
   vertical-align: middle; /* Ensure the image is vertically centered */
 }
 
-#header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px; /* Increased padding for better spacing */
-  background-color: #1e2a38; /* Header background color */
-  width: 100%;
-  position: fixed; /* Fixed positioning for consistent top alignment */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  z-index: 1000; /* Ensure header is above other content */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-}
 
-#headerText {
-  font-size: 26px; /* Header text size */
-  font-family: 'Bungee Shade', cursive; /* Header text font */
-  color: white; /* Text color for header */
-}
 
 .tabs {
   display: flex; /* Keep tabs in a row */
@@ -109,11 +118,6 @@ body {
 .tab-icon {
   height: 6vh; /* Adjusted to 6% of viewport height */
   margin-right: 20px; /* Space between logo and text */
-}
-
-#headerText {
-  font-size: 24px;
-  font-family: 'Bungee Shade', cursive; /* Change font if needed */
 }
 
 /* Welcome text styling */
