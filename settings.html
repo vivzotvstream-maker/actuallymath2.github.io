@@ -23,53 +23,28 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 4vh 1vw; /* Reduced padding */
             text-align: center;
         }
-        #header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            background-color: #1e2a38;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .tabs {
-            display: flex;
-            gap: 20px;
-        }
-        .tab {
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .tab:hover {
-            background-color: #2c3e50;
-        }
+
         .centered-text {
-            font-size: 32px;
-            margin: 40px 0;
+            font-size: 1.5vw; /* Reduced font size */
+            margin: 3vh 0; /* Reduced margin */
         }
         .button {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px; /* Slightly reduced gap */
             background-color: #e0e0e0;
             border: 2px solid #bbb;
-            padding: 12px 24px;
+            padding: 1.2vh 2.5vw; /* Reduced padding */
             border-radius: 30px;
             cursor: pointer;
             position: relative;
-            font-size: 18px;
+            font-size: 1.5vw; /* Keep button font size */
             transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            margin-top: 10px;
+            margin-top: 1.5vh; /* Reduced margin */
             overflow: hidden;
             color: #333;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -79,30 +54,36 @@
             transform: scale(1.05);
         }
         .text-cloak-container, .set-panic-key-container, .set-panic-url-container, .icon-cloak-container {
-            margin: 20px 0;
+            margin: 15px 0; /* Reduced margin */
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px; /* Slightly reduced gap */
         }
+        
+        /* Specific text classes for Cloak and Panic Key */
+        .cloak-text, .panic-key-text {
+            font-size: 2vw; /* Increased font size for these texts */
+        }
+    
         input[type="text"] {
-            padding: 10px;
-            font-size: 18px;
-            width: 300px;
+            padding: 8px; /* Reduced padding */
+            font-size: 1.2vw; /* Reduced font size */
+            width: 50vw; /* Reduced width */
             border-radius: 5px;
             border: 1px solid #ccc;
-            margin: 10px 0;
+            margin: 8px 0; /* Reduced margin */
         }
         .preset-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 10px; /* Reduced gap */
+            margin: 15px 0; /* Reduced margin */
         }
         .preset-button {
-            width: 60px;
-            height: 60px;
+            width: 50px; /* Reduced size */
+            height: 50px; /* Reduced size */
             border: none;
             background-size: cover;
             cursor: pointer;
@@ -112,7 +93,33 @@
         .preset-button:hover {
             transform: scale(1.1);
         }
+    
+        /* Media Queries for Small Screens */
+        @media (max-width: 768px) {
+            .tab {
+                font-size: 0.85rem; /* Reduced font size */
+                padding: 0.6rem 1rem; /* Reduced padding */
+            }
+            input[type="text"] {
+                width: 60vw; /* Adjusted width */
+                font-size: 0.85rem; /* Reduced font size */
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .tab {
+                font-size: 0.75rem; /* Reduced font size */
+                padding: 0.5rem 0.8rem; /* Reduced padding */
+            }
+            input[type="text"] {
+                width: 70vw; /* Adjusted width */
+                font-size: 0.75rem; /* Reduced font size */
+            }
+        }
     </style>
+    
+    
+    
 </head>
 <body>
     <header id="header">
@@ -126,7 +133,7 @@
         <span id="headerText">Actually Math</span>
     </header>
     
-    <button id="ab-cloak" class="button">Open in About:Blank</button>
+
 
     <div class="cloak-text">Tab Cloaking</div>
     <div class="text-cloak-container">
@@ -199,12 +206,6 @@
             console.log('Tab Icon URL Set:', iconURL);
         });
     
-        // Open in About:Blank functionality
-        document.getElementById('ab-cloak').addEventListener('click', function(event) {
-            event.preventDefault();
-            console.log('Open in About:Blank clicked'); // Log to check if the button is working
-            window.open('about:blank', '_blank'); // Open a new tab with about:blank
-        });
     
         document.getElementById('set-panic-key').addEventListener('click', function(event) {
             event.preventDefault();
