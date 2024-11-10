@@ -198,73 +198,72 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px; /* Added padding for better spacing */
-  gap: 20px; /* Added gap for consistent spacing between items */
+  padding: 10px;
+  gap: 20px;
 }
 
 .flex-item {
   width: 200px;
   height: 200px;
-  background-color: #fff; /* Change to white */
-  text-align: center;
+  background-size: cover;
+  background-position: center;
   cursor: pointer;
-  border-radius: 12px; /* Set initial rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Added transition for background color */
-  position: relative; /* Needed for overlay effect */
-  display: flex; /* Center content */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  border-radius: 12px;
+  overflow: hidden; /* Prevent overflow of hover effects */
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.flex-item:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  border: 5px solid #000000; /* Border color on hover */
-}
-
-.flex-item::after {
+.flex-item::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Slightly dark overlay */
+  background-color: rgba(0, 0, 0, 0.25); /* Dark overlay for depth */
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  border-radius: 12px; /* Match border radius */
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
 }
 
-.flex-item:hover::after {
-  opacity: 1;
+.flex-item:hover::before {
+  opacity: 1; /* Show overlay on hover */
 }
 
+.flex-item:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+.flex-item:hover {
+  background-size: 110%; /* Scale up background image */
+}
+
+/* Styling for span (game title) */
 .flex-item span {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
   position: absolute;
-  bottom: 25px; /* More breathing room */
+  bottom: 15px; /* Adjusted spacing from bottom */
   left: 50%;
   transform: translateX(-50%);
-  color: #fff; /* White text */
-  background-color: rgba(0, 0, 0, 0.85); /* Richer background */
-  padding: 10px 16px; /* Balanced padding */
-  font-size: 16px; /* Clean font size */
-  font-weight: 500; /* Medium weight */
-  white-space: nowrap;
-  border-radius: 12px; /* Soft rounded corners */
-  z-index: 10;
-  pointer-events: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
-  text-align: center; /* Centered text for better presentation */
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5); /* Darker background for text */
+  padding: 12px 16px; /* Larger padding for emphasis */
+  font-size: 18px; /* Larger text size */
+  font-weight: bold; /* Bold text for prominence */
+  border-radius: 15px; /* Rounded corners */
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth fade and movement */
+  transform: translateX(-50%) translateY(10px); /* Initial off-position for smoother effect */
 }
 
 .flex-item:hover span {
-  visibility: visible;
-  opacity: 1;
+  opacity: 1; /* Reveal text on hover */
+  transform: translateX(-50%) translateY(0); /* Smooth movement to center */
 }
+
+
 
 /* Tip Section */
 .tip {
