@@ -4,6 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actually Math - Play various online games with your friends! Explore games like 2048, Coreball, Basketball Legends, and more.">
+    <meta name="keywords" content="online games, 2048, Coreball, Basketball Legends, Burrito Bison, free games, fun games, Actually Math">
+    <meta name="author" content="Actually Math Team">
+    <meta property="og:title" content="Actually Math">
+    <meta property="og:description" content="Explore and play your favorite games like 2048, Coreball, Basketball Legends, and many others at Actually Math.">
+    <meta property="og:image" content="images/am-logo.png">
+    <meta property="og:url" content="https://actuallymath.github.io">
+    <meta name="twitter:title" content="Actually Math">
+    <meta name="twitter:description" content="Explore and play your favorite games like 2048, Coreball, Basketball Legends, and many others at Actually Math.">
+    <meta name="twitter:image" content="images/am-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Actually Math</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -11,8 +22,6 @@
     <script src="panic.js"></script> <!-- Include the panic.js script -->
     <script src="script.js"></script>
 </head>
-
-
 
 <!-- Header Section -->
 <header id="header">
@@ -31,7 +40,6 @@
     <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="searchGames()">
     <button onclick="searchGames()"><i class="fas fa-search"></i></button>
 </div>
-
 
 <!-- Flexbox Container for Games -->
 <div class="flex-container">
@@ -193,29 +201,28 @@
         
         </div>
 
+<!-- Search Functionality -->
+<script>
+    function searchGames() {
+        var input = document.getElementById('searchInput');
+        var filter = input.value.toUpperCase();
+        var flexContainer = document.getElementsByClassName('flex-container')[0];
+        var flexItems = flexContainer.getElementsByClassName('flex-item');
 
-
-        <!-- Search Functionality -->
-    <script>
-        function searchGames() {
-            var input = document.getElementById('searchInput');
-            var filter = input.value.toUpperCase();
-            var flexContainer = document.getElementsByClassName('flex-container')[0];
-            var flexItems = flexContainer.getElementsByClassName('flex-item');
-
-            for (var i = 0; i < flexItems.length; i++) {
-                var a = flexItems[i];
-                var txtValue = a.textContent || a.innerText;
-                flexItems[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
-            }
+        for (var i = 0; i < flexItems.length; i++) {
+            var a = flexItems[i];
+            var txtValue = a.textContent || a.innerText;
+            flexItems[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
         }
-    </script>
+    }
+</script>
 
-
-
-<div align='center'><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=179081&s=5' border='0' alt='Free Website Hit Counter'></a><br / ><small><a 
-
-
+<div align='center'>
+    <a href='https://www.free-website-hit-counter.com'>
+        <img src='https://www.free-website-hit-counter.com/c.php?d=9&id=179081&s=5' border='0' alt='Free Website Hit Counter'>
+    </a><br />
+    <small><a href="https://www.free-website-hit-counter.com">Free Website Hit Counter</a></small>
+</div>
 
 </body>
 
