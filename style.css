@@ -165,6 +165,17 @@ body {
   text-align: center;
 }
 
+.no-link-style {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Keeps the color from your existing styles */
+}
+
+.no-link-style:active,
+.no-link-style:focus {
+  outline: none; /* Removes the outline when clicked */
+}
+
+
 /* Search bar styling */
 .search-bar {
   display: flex;
